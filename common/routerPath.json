@@ -1,0 +1,9 @@
+{
+  "swagger": {
+    "basePath": "/swagger",
+    "proxy": "/proxy",
+    "addServer": "/addserver",
+    "getAllServers": "/servers",
+    "deleteServer": "/delete"
+  }
+}
