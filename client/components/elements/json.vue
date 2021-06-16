@@ -53,7 +53,7 @@ export default {
   background: #fff;
   padding: 8px;
   border-radius: 8px;
-  box-shadow: inset 2px 2px 10px;
+  // box-shadow: inset 2px 2px 10px;
   .json {
     overflow: auto;
   }

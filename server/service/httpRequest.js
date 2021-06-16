@@ -16,7 +16,7 @@ const httpRequest = (config, cb) => {
     const endTime = new Date().valueOf()
     responseDao.duration = endTime - startTime
     responseDao.error = true
-    responseDao.setErrorMessage(err)
+    responseDao.setErrorMessage({message: err.message, errorObj: err.response.data})
     responseDao.requestConfig = config
     cb(responseDao)
   })

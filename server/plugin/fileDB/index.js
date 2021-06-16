@@ -18,7 +18,6 @@ const getFileData = (filePath, cb) => {
 }
 
 module.exports = class FileDB {
-  static path = ''
   constructor (db_name) {
     this.db_name = db_name
     this.db_path = path.join(__dirname, 'db' , `${db_name}.json`)

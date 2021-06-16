@@ -10,19 +10,19 @@
       </div>
       <div class="api-card-impl mt-3" v-if="open" >
         <h5 class="mt-3 tx">{{api.summary}}</h5>
-        <div class="api-card-impl__request flex">
-          <div class="tx-light">
+        <div class="api-card-impl__request flex ">
+          <div class="tx-light pr-3">
             <div v-if="headers.length">
               <div class="flex space-between mt-3">
                 <b>Headers:</b>
               </div>
-              <div v-for="(header,index) in headers" :key="header.id" class="mt-2 request-property flex v-center">
+              <div v-for="(header,index) in headers" :key="header.id" class="mt-2 request-property flex v-center space-between">
                 <div class="mr-3">
                   <h6 class="tx tx-small">{{header.name}}<b v-if="header.required" class="ml-1 tx-alert">*</b></h6>
                   <p class="tx-x-small">{{header.description}}</p>
                 </div>
-                <input type="text" v-if="!header.hasOptions" v-model="headers[index].value" >
-                <select v-else v-model="headers[index].value" >
+                <input type="text" v-if="!header.hasOptions" v-model="headers[index].value" :disabled="!edit">
+                <select v-else v-model="headers[index].value" :disabled="!edit">
                   <option v-for="option in header.options" :key="option.id" :value="option">{{option}}</option>
                 </select>
               </div>
@@ -31,13 +31,13 @@
               <div class="flex space-between mt-3">
                 <b>Path Parameaters:</b>
               </div>
-              <div v-for="(property,index) in pathParam" :key="property.id" class="mt-2 request-property flex v-center">
+              <div v-for="(property,index) in pathParam" :key="property.id" class="mt-2 request-property flex v-center space-between">
                 <div class="mr-3">
                   <h6 class="tx tx-small">{{property.name}}<b v-if="property.required" class="ml-1 tx-alert">*</b></h6>
                   <p class="tx-x-small">{{property.description}}</p>
                 </div>
-                <input type="text" v-if="!property.hasOptions" v-model="pathParam[index].value" >
-                <select v-else v-model="pathParam[index].value" >
+                <input type="text" v-if="!property.hasOptions" v-model="pathParam[index].value" :disabled="!edit">
+                <select v-else v-model="pathParam[index].value" :disabled="!edit">
                   <option v-for="option in property.options" :key="option.id" :value="option">{{option}}</option>
                 </select>
               </div>
@@ -46,13 +46,13 @@
               <div class="flex space-between mt-3">
                 <b>Query Parameaters:</b>
               </div>
-              <div v-for="(property,index) in query" :key="property.id" class="mt-2 request-property flex v-center">
+              <div v-for="(property,index) in query" :key="property.id" class="mt-2 request-property flex v-center space-between">
                 <div class="mr-3">
                   <h6 class="tx tx-small">{{property.name}}<b v-if="property.required" class="ml-1 tx-alert">*</b></h6>
                   <p class="tx-x-small">{{property.description}}</p>
                 </div>
-                <input type="text" v-if="!property.hasOptions" v-model="query[index].value" >
-                <select v-else v-model="query[index].value" >
+                <input type="text" v-if="!property.hasOptions" v-model="query[index].value" :disabled="!edit">
+                <select v-else v-model="query[index].value" :disabled="!edit">
                   <option v-for="option in property.options" :key="option.id" :value="option">{{option}}</option>
                 </select>
               </div>
@@ -61,7 +61,7 @@
               <div class="mt-3">
                 <b>Request Body:</b>
               </div>
-              <p-json class="mt-2" v-model="body" :edit="true" />
+              <p-json class="mt-2" v-model="body" :edit="edit" />
             </div>
             <div class="tx-small mt-3 flex flex-end">
               <p-btn v-if="!edit" color="lightBlue" @click="edit = true" light> Edit </p-btn>
@@ -85,7 +85,9 @@
             </div>
           </div>
         </div>
-        <div class="api-card-impl__response"></div>
+        <div class="api-card-impl__response">
+          <response-card ref="responseCard" />
+        </div>
       </div>
     </div>
   </div>
@@ -94,8 +96,9 @@
 <script>
 import { cloneDeep } from 'lodash'
 import { mapState } from 'vuex'
-// import axios from 'axios'
+import responseCard from './responseCard.vue'
 export default {
+  components: { responseCard },
   name: 'apiCard',
   props: {
     api: Object
@@ -133,8 +136,7 @@ export default {
           body: this.body
         }
       }
-      console.log(requestConfig)
-      // axios(requestConfig)
+      this.$refs.responseCard.applyApiCall(requestConfig)
     }
   },
   created () {
@@ -153,19 +155,19 @@ export default {
     }
   }
   &-post {
-    background: rgba($success, 0.25);
+    background: rgba($success, 0.15);
     .method-badge {
       background: $success;
     }
   }
   &-put {
-    background: rgba($warning, 0.25);
+    background: rgba($warning, 0.15);
     .method-badge {
       background: $warning;
     }
   }
   &-delete {
-    background: rgba($alert, 0.25);
+    background: rgba($alert, 0.15);
     .method-badge {
       background: $alert;
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="api-docs">
+  <div class="api-docs pb-20">
     <div class="v-center space-between my-5">
       <h2 class="tx-x-lg tx-light">Select your server</h2>
       <div class="p-input">
@@ -12,7 +12,7 @@
     <no-server v-if="!selectedServer"/>
     <loading-server v-else-if="showLoadingServer"/>
     <server-error :error="error" v-else-if="showServerError" @retry="fetchApiDocs"/>
-    <doc-compile-error :error="{message: 'This is just a test message', }" v-else-if="showCompileError"/>
+    <doc-compile-error :error="{message: compileErrorMessage, }" v-else-if="showCompileError"/>
     <api-docs v-else :apiDocs="apiDocs"/>
   </div>
 </template>
@@ -34,7 +34,8 @@ export default {
     status: 2,
     error: {},
     compileError: false,
-    apiDocs: null
+    apiDocs: null,
+    compileErrorMessage: ''
   }),
   computed: {
     ...mapState('swagger', ['serverList']),
@@ -79,7 +80,9 @@ export default {
         try {
           this.apiDocs = swaggerDocFormatter(res.data.responseBody)
           this.$store.commit('swagger/SET_API_DOC', this.apiDocs)
-        } catch {
+        } catch (e) {
+          console.error(e)
+          this.compileErrorMessage = e.message
           this.compileError = true
         }
         this.status = 1

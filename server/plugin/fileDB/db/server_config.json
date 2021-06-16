@@ -1,16 +1,16 @@
 {
-  "xbmpmgdi3": {
-    "name": "cart revo qa2 sd fs f sf sdf sdfsd",
+  "s6r2v31si": {
+    "name": "flex-build-free",
     "proto": "http://",
-    "endpoint": "cart-revolution.qa1-sg.cld",
-    "docPath": "/cart-evolution/v2/api-docs",
-    "id": "xbmpmgdi3"
+    "endpoint": "192.168.0.116:9100/freewebtool",
+    "docPath": "/v2/api-docs",
+    "id": "s6r2v31si"
   },
-  "9qipzx2nj": {
-    "name": "wcfqwefqw",
+  "8cpukmeen": {
+    "name": "flex-build-cms",
     "proto": "http://",
-    "endpoint": "cart-revolution.qa1-sg.cld/",
-    "docPath": "cart-revolution/v2/api-docs",
-    "id": "9qipzx2nj"
+    "endpoint": "192.168.0.116:9094",
+    "docPath": "/v2/api-docs",
+    "id": "8cpukmeen"
   }
 }

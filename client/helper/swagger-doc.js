@@ -10,6 +10,9 @@ const objectConstructor = (property, definitions) => {
   if ('type' in property) {
     if (property.type === 'object') {
       const classObj = {}
+      if ('additionalProperties' in property) {
+        classObj.MapKey = objectConstructor(property.additionalProperties, definitions )
+      }
       for (let prop in property.properties || {}) {
         classObj[prop] = objectConstructor(property.properties[prop], definitions )
       }
@@ -20,7 +23,7 @@ const objectConstructor = (property, definitions) => {
       return [ objectConstructor(property.items, definitions) ]
     }
   } if ('$ref' in property) {
-    return objectConstructor(definitions[property.$ref.split('/')[2]], definitions)
+    return definitions[property.$ref.split('/')[2]] ? objectConstructor(definitions[property.$ref.split('/')[2]], definitions) : {}
   }
 }
 
@@ -47,6 +50,7 @@ const apiConstructor = (path, method, data) => {
   resObj.description = apiObject.description
   resObj.consumes = apiObject.consumes
   resObj.produces = apiObject.produces
+  apiObject.parameters = apiObject.parameters || []
   resObj.pathParam = apiObject.parameters.filter(parameter => parameter.in === 'path').map(parameterFormatter)
   resObj.query = apiObject.parameters.filter(parameter => parameter.in === 'query').map(parameterFormatter)
   resObj.header = apiObject.parameters.filter(parameter => parameter.in === 'header').map(parameterFormatter)
@@ -56,7 +60,11 @@ const apiConstructor = (path, method, data) => {
       resObj.body = objectConstructor(resObj.body[0].schema, data.definitions)
     }
   }
-  resObj.response = objectConstructor(apiObject.responses['200'].schema, data.definitions)
+  Object.keys(apiObject.responses).forEach(status => {
+    if ('schema' in apiObject.responses[status]) {
+      resObj.response = objectConstructor(apiObject.responses[status].schema, data.definitions)
+    }
+  })
   return resObj
 }
 
