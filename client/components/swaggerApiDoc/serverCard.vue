@@ -2,7 +2,7 @@
   <div class="server-card flex space-between m-4 bg-ele-1 p-5">
     <div class="pt-4">
       <h2 class="tx-x-lg tx-n tx-ellipsis" :title="server.name">{{server.name}}</h2>
-      <a :href="docPath" target="_blank" class="tx-light tx-small py-3 block"> {{docPath}}</a>
+      <a :href="docPath" target="_blank" class="tx-light tx-small py-3 block tx-line-break"> {{docPath}}</a>
     </div>
     <div class="flex flex-end">
       <button v-tooltip.bottom-start="'Health Check'" class="fa fa-heartbeat tx-o2" @click="healthCheck"></button>

@@ -29,7 +29,9 @@
           {{proto + endpoint + docPath}}
         </p>
       </div>
-      <p v-if="status !== 2" class="status-chip pill tx-x-small px-3 mx-2 py-1 tx-white" :class="status === 1 ? 'bg-success' : status === -1 ? 'bg-alert' : 'bg-warning'">
+      <p 
+        v-if="status !== 2" class="status-chip pill tx-x-small px-3 mx-2 py-1 tx-white"
+        :class="status === 1 ? 'bg-success' : status === -1 ? 'bg-alert' : 'bg-warning'">
         {{status === 1 ? "Success" : status === -1 ? "Failed" : "Testing.."}}
       </p>
     </div>
@@ -98,7 +100,6 @@ export default {
 
 <style lang="scss" scoped>
 form {
-  width: 500px;
   padding: 20px;
 }
 </style>

@@ -8,9 +8,7 @@
       :plus="false"
       height="100%"/>
     <div v-else class="pika-json-view">
-      <button v-if="!fullHeight" class="fa fa-expand tx-o2" @click="fullHeight = true"></button>
-      <button v-else class="fa fa-times tx-alert" @click="fullHeight = false"></button>
-      <div class="json" :style="{maxHeight: fullHeight ? null : maxHeight}">
+      <div class="json" >
         <vue-json-pretty
         :data="value"/>
       </div>
@@ -27,19 +25,14 @@ export default {
   name: 'Json',
   props: {
     edit: Boolean,
-    value: [String, Object, Array, Number, Boolean],
-    maxHeight: {
-      type: String,
-      default: '250px'
-    }
+    value: [String, Object, Array, Number, Boolean]
   },
   components: {
     VJsoneditor,
     VueJsonPretty
   },
   data: () => ({
-    bindData: {},
-    fullHeight: false
+    bindData: {}
   }),
   created () {
     this.bindData = this.value
@@ -56,6 +49,15 @@ export default {
   // box-shadow: inset 2px 2px 10px;
   .json {
     overflow: auto;
+    resize: vertical;
+    padding-bottom: 20px;
+    height: 250px;
+    &::-webkit-resizer {
+      display: block;
+      background: #000;
+      border-radius: 50%;
+      
+    }
   }
   button {
     position: absolute;
