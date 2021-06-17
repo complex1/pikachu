@@ -6,9 +6,6 @@
       <li class="mx-2">
         <router-link :to="{name: 'SwaggerApiDoc'}" class="tx-n tx-light"> Swagger Api Doc </router-link>
       </li>
-      <li class="mx-2">
-        <router-link :to="{name: 'SwaggerApiDoc'}" class="tx-n tx-light"> New Page </router-link>
-      </li>
     </ol>
   </nav>
 </template>
