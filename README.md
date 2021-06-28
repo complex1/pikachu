@@ -49,10 +49,10 @@ This tool is an alternative of swagger ui. In world of microservice architecture
 - open [http://localhost:8050/swagger-api-doc](http://localhost:8050/swagger-api-doc)
 - click on Add Server.
 - fill your server detail.
-  **Server Name:** Name of your server (your choice)
-  **Proto:** Name of protocal http or https
-  **Endpoint:** your server Endpoint (Ex: 127.0.0.1:8000)
-  **Api Doc Path:** Path of your api doc url, usually it is 'microservice_base_path' + '/v2/api-docs'
+  - **Server Name:** Name of your server (your choice)
+  - **Proto:** Name of protocal http or https
+  - **Endpoint:** your server Endpoint (Ex: 127.0.0.1:8000)
+  - **Api Doc Path:** Path of your api doc url, usually it is 'microservice_base_path' + '/v2/api-docs'
 - Test your connectivity by clicking on test.
 - Save your server.
 - Go to Api Docs Tab.
