@@ -4,6 +4,9 @@ Pikachu is web based tool for devlopers to make there development smart and fast
 
 ## How to setup
 
+### Prerequisite
+Install Node  [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
+
 - clone/download this repo
 - To clone
 
