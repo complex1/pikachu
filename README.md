@@ -24,7 +24,7 @@ npm install
 npm run dev
 ```
 
-### To run in build mode
+### To run in build mode (For using this application)
 
 ```bash
 npm run app
