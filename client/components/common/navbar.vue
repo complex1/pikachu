@@ -4,7 +4,13 @@
     <h1 class="tx-header tx-warning ml-3 mr-5">Pikachu</h1>
     <ol class="v-center pt-3">
       <li class="mx-2">
+        <router-link :to="{name: 'Home'}" class="tx-n tx-light"> Home </router-link>
+      </li>
+      <li class="mx-2">
         <router-link :to="{name: 'SwaggerApiDoc'}" class="tx-n tx-light"> Swagger Api Doc </router-link>
+      </li>
+      <li class="mx-2">
+        <router-link :to="{name: 'JsonFormatter'}" class="tx-n tx-light"> Json Formatter </router-link>
       </li>
     </ol>
   </nav>

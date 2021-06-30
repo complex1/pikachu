@@ -7,8 +7,8 @@
       :options="{ mode: 'code', navigationBar: false, statusBar: false, mainMenuBar: false}"
       :plus="false"
       height="100%"/>
-    <div v-else class="pika-json-view">
-      <div class="json" >
+    <div v-else class="pika-json-view" :class="{'fh': full, 'resize': resize}">
+      <div class="json" :class="{'fh': full}">
         <vue-json-pretty
         :data="value"/>
       </div>
@@ -25,7 +25,12 @@ export default {
   name: 'Json',
   props: {
     edit: Boolean,
-    value: [String, Object, Array, Number, Boolean]
+    value: [String, Object, Array, Number, Boolean],
+    full: Boolean,
+    resize: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     VJsoneditor,
@@ -40,7 +45,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .pika-json-view {
   position: relative;
   background: #fff;
@@ -49,14 +54,18 @@ export default {
   // box-shadow: inset 2px 2px 10px;
   .json {
     overflow: auto;
-    resize: vertical;
     padding-bottom: 20px;
     height: 250px;
+    &.resize {
+      resize: vertical;
+    }
+    &.fh {
+      height: 100%;
+    }
     &::-webkit-resizer {
       display: block;
       background: #000;
       border-radius: 50%;
-      
     }
   }
   button {

@@ -80,6 +80,7 @@ export default {
         try {
           this.apiDocs = swaggerDocFormatter(res.data.responseBody)
           this.$store.commit('swagger/SET_API_DOC', this.apiDocs)
+          this.compileError = false
         } catch (e) {
           console.error(e)
           this.compileErrorMessage = e.message

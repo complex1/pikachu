@@ -1,1 +1,23 @@
-{}
+{
+  "rcrdqtxdx": {
+    "name": "cart-revo",
+    "proto": "http://",
+    "endpoint": "cart-revolution.qa1-sg.cld/cart-revolution/",
+    "docPath": "/v2/api-docs",
+    "id": "rcrdqtxdx"
+  },
+  "5avhdtmig": {
+    "name": "abc",
+    "proto": "http://",
+    "endpoint": "corporate-travel-cart.qa1-sg.cld/corporate-travel-cart",
+    "docPath": "/app/api-docs",
+    "id": "5avhdtmig"
+  },
+  "lgqx0sv0m": {
+    "name": "travel-cms",
+    "proto": "http://",
+    "endpoint": "travel-cms.qa1-sg.cld/",
+    "docPath": "/v2/api-docs",
+    "id": "lgqx0sv0m"
+  }
+}
