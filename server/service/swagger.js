@@ -32,11 +32,11 @@ swaggerService.proxyCall = (config, cb) => {
   requestBody.url = fullUrl
   requestBody.method = config.method || 'GET'
   requestBody.headers = config.headers || {}
-  if (typeof config.data === 'object' && requestBody.method !== 'GET') {
+  if (typeof config.body === 'object' && requestBody.method !== 'GET') {
     requestBody.headers['Content-type'] = 'application/json'
   }
   if (requestBody.method !== 'GET') {
-    requestBody.data = config.data
+    requestBody.data = config.body
   }
   httpRequest(requestBody, cb)
 }

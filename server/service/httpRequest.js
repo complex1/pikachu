@@ -2,6 +2,7 @@ const axios = require('axios').default
 const ResponseDao = require('../dao/resposce')
 
 const httpRequest = (config, cb) => {
+  console.log(config)
   const responseDao = new ResponseDao()
   const startTime = new Date().valueOf()
   axios(config).then(res => {

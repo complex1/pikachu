@@ -45,6 +45,7 @@ export default {
         this.errorMessage = res.data.errorMessage.message
         this.errorObject = res.data.errorMessage.errorObj
       } else {
+        this.error = false
         this.resData = res.data.responseBody
       }
     },
