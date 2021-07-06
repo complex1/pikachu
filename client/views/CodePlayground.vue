@@ -106,9 +106,6 @@ export default {
   }
  
   /* optional class for removing the outline */
-  .prism-editor__textarea:focus {
-    outline: none;
-  }
 iframe {
   border: 0px solid;
 }

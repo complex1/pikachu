@@ -45,3 +45,7 @@ h1,h2,h3,h4,h5,h6,p,ol,li,a {
 input,select,textarea {
   background-color: $white;
 }
+
+.prism-editor__textarea:focus {
+  outline: none;
+}
