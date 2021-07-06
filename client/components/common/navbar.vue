@@ -12,6 +12,9 @@
       <li class="mx-2">
         <router-link :to="{name: 'JsonFormatter'}" class="tx-n tx-light"> Json Formatter </router-link>
       </li>
+      <li class="mx-2">
+        <router-link :to="{name: 'CodePlayground'}" class="tx-n tx-light"> Code Playground </router-link>
+      </li>
     </ol>
   </nav>
 </template>

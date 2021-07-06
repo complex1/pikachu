@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SwaggerApiDoc from '../views/SwaggerApiDoc.vue'
 import JsonFormatter from '../views/JsonFormatter.vue'
+import CodePlayground from '../views/CodePlayground.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ const routes = [
     path: '/jsonformatter',
     name: 'JsonFormatter',
     component: JsonFormatter
+  },
+  {
+    path: '/codeplayground',
+    name: 'CodePlayground',
+    component: CodePlayground
   }
 ]
 
