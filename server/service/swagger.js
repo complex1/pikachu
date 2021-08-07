@@ -1,4 +1,3 @@
-const matchAll =  require('match-all')
 const httpRequest = require('./httpRequest')
 const Server = require('../modal/server')
 const swaggerService = {}
@@ -6,8 +5,7 @@ const swaggerService = {}
 swaggerService.proxyCall = (config, cb) => {
 
   let fullUrl = config.proto + (config.baseUrl + config.url).replace(/\/+/gm, '/')
-
-  const matchList = matchAll(fullUrl, /{.*?}/).toArray()
+  const matchList = fullUrl.match(/{.*?}/gi)
 
   matchList.forEach(key => {
     const value = config.params[key.slice(1, -1).trim()]

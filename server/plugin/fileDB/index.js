@@ -20,7 +20,7 @@ const getFileData = (filePath, cb) => {
 module.exports = class FileDB {
   constructor (db_name) {
     this.db_name = db_name
-    this.db_path = path.join(__dirname, 'db' , `${db_name}.json`)
+    this.db_path = path.join(__dirname, '..', '..', '..', 'db' , `${db_name}.json`)
     fs.readFile(this.db_path, (err, data) => {
       if (err) {
         fs.writeFile(this.db_path, '{}', (err) => {
